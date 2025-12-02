@@ -95,6 +95,7 @@ Du wählst bei jedem Dienst eine Region aus.
 ## 📚 8. Lernressourcen
 
 ### Offiziell:
+- [Skill Builder](https://skillbuilder.aws/learn/94T2BEN85A/aws-cloud-practitioner-essentials/)
 - 🔗 [AWS Free Tier Übersicht](https://aws.amazon.com/free/)
 - 📘 [AWS Getting Started Guide](https://aws.amazon.com/getting-started/)
 
@@ -180,6 +181,7 @@ Stichwort: Trigger
 Die eigene Anwendung muss auf einen Trigger konfiguriert werden z.B. HTTP requests.
 
 #### Container
+
 Container ein einziges portables Formate, welches alles enthält, damit eine Anwendung unabhängig vom Setup und Host läuft.
 Container laufen auf einem Hostsystem, nicht wie eine VM, welche über ein Hypervisor läuft.
 
@@ -197,3 +199,35 @@ Vorgehen:
 2) Orchistration Service wählen, ECS oder EKS
 3) Wähle Platform: EC2 oder Fargate (managed von AWS)
 
+#### Networking - Virtual Private Cloud (VPC)
+
+Die VPC ist der oberste Container der Netzwerkisolation innerhalb eines AWS-Accounts.
+Alles, was IP-Netzwerke nutzt (EC2, RDS, ElastiCache, ENIs, NAT/IGW usw.), läuft innerhalb einer VPC.
+Ein VPC ist ein logisch isoliertes Netzwerk innerhalb der AWS Cloud.
+Ein VPC ist die Grundlage für z.B. EC2 Instanzen.
+
+Andere Services wie z.B. S3 brauchen kein VPC.
+
+Vorteil:
+- Man kann das Netzwerk nicht von außen (clients) zugänglich machen.
+- Eigenen IP Adressraum festlegen
+- Subnetze erstellen (private (z.B. Datenbanken) und öffentliche z.B. EC2 Instanzen), um Resourcen zu organisieren
+- Routing steuern
+- Sicherheitskontrolle (Steuerun von eingehenden und ausgehenden Traffic)
+
+__Gateways__
+
+Um einen öffentlichen Zugang zum VPC zu ermöglichen, braucht man ein Internt Gateway. (Eine Art Tür zum VPC)
+
+Für einen privaten Zugang zu ermöglichen, braucht man einen Virtual Private Gateway. Dieser ist nur über VPN zugänglich.
+
+Beispiel Szenario öffentlicher Zugang:
+
+Client (Anfrage via Internet) ---> AWS Cloud ---> Internet Gateway (Türe zum VPC) ---> VPC ----> Subnet ---> EC2 Instanzen
+
+__Zugangsarten zur Cloud__
+
+- Client VPN (OpenVPN based) - Überall erreichbar
+- Site-to-Site VPN
+- PrivateLink
+- Direct Connect
