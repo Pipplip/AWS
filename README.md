@@ -225,9 +225,48 @@ Beispiel Szenario öffentlicher Zugang:
 
 Client (Anfrage via Internet) ---> AWS Cloud ---> Internet Gateway (Türe zum VPC) ---> VPC ----> Subnet ---> EC2 Instanzen
 
+__Network Access Control Lists (ACLs) & Security groups__
+
+Zusätzlich gibt es ACLs, die den ein- und ausgehenden Traffic auf Subnet Ebene kontrollieren. Wie eine Art Firewall.
+ACLs sind zustandslos (stateless), d.h. es muss für eingehenden und ausgehenden Traffic eine Regel definiert werden, weil sich die ACLs nicht merken, ob eine Paket-Anfrage erlaubt wurde oder nicht.
+
+Nun gibt es innerhalb des Subnets eventuell mehrere EC2 Instanzen, die nur bestimmten Traffic erlauben sollen. Dafür gibt es die Security Groups.
+D.h. eine Security Group ist eine virtuelle Firewall auf Instanz (z.B. EC2) Ebene. Security Groups sind zustandsbehaftet (stateful), d.h. wenn eine eingehende Regel definiert wird, wird der ausgehende Traffic automatisch erlaubt
+
+Eine Security Group kann man sich als Türsteher vorstellen, der nur bestimmte Anfragen durchlässt, aber alle Antworten wieder herauslässt.
+
+ACLs und Security Groups müssen selbst konfiguriert werden, da AWS keine Standardregeln vordefiniert.
+
 __Zugangsarten zur Cloud__
 
-- Client VPN (OpenVPN based) - Überall erreichbar
+- Client VPN (OpenVPN based) - Überall erreichbar (z.B. Home Office)
 - Site-to-Site VPN
 - PrivateLink
-- Direct Connect
+- Direct Connect (Höhree Bandbreite, niedrige Latenz)
+
+![VPC](/images/VPC.png)
+  
+![VPC subnet](/images/VPC_subnet.png)
+
+![VPC regions](/images/VPC_regions.png)
+
+__Amazon Route 53__
+
+Route 53 ist ein skalierbarer und hochverfügbarer Domain Name System (DNS)-Webdienst. Er übersetzt Domain-Namen (z.B. www.beispiel.de) in 
+IP-Adressen (z.B. 192.0.2.1), die Computer verwenden, um sich gegenseitig im Internet zu finden.
+
+__Amazon CloudFront__
+
+CloudFront ist ein Content Delivery Network (CDN)-Dienst, der Inhalte (z.B. Webseiten, Videos, APIs) schnell und sicher an Endbenutzer weltweit liefert. CloudFront nutzt ein Netzwerk von Edge-Standorten, um Inhalte näher an den Benutzern zu speichern und so die Latenz zu reduzieren.
+
+![VPC](/images/cloudfront.png)
+
+__AWS Globals Accelerator__
+
+AWS Global Accelerator ist ein Netzwerkdienst, der den Datenverkehr von Benutzern zu Anwendungen optimiert, die in AWS ausgeführt werden. Er verwendet das globale AWS-Netzwerk, um den Datenverkehr über die optimalen Pfade zu leiten, was die Leistung und Verfügbarkeit von Anwendungen verbessert.
+
+#### Storage
+
+__Block Storage__
+
+Block Storage ist eine Speicherart, bei der Daten in Blöcken fester Größe gespeichert werden. Jeder Block hat eine eindeutige Adresse, die es dem Betriebssystem ermöglicht, direkt auf die Daten zuzugreifen. Block Storage wird häufig für Betriebssysteme und Anwendungen verwendet, die schnellen und direkten Zugriff auf Daten benötigen.
