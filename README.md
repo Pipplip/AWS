@@ -132,7 +132,7 @@ resource "aws_s3_bucket" "mein_bucket" {
 
 ## Weitere Notizen
 
-#### EC2
+## EC2
 
 Es gibt minimum capacity, desired capacity und maximum capacity.
 
@@ -164,7 +164,7 @@ Auch wenn z.B. das Backend komplett ausfällt, dann bekommt das Frontend keine F
 
 -> SQS (Amazon simple queue service) oder SNS (Amazon simple notification service)
 
-#### Managed services
+## Managed services
 
 Unmanaged Services: wie E2, ist man eigenverantwortlich für das Setup, Sicherheit, Wartung des OS, Netzwerkkonfiguration und den Anwendungen selbst. AWS liefert nur die phyiskalische 
 Infrastruktur.
@@ -180,7 +180,7 @@ Lambda ist ein serverloser Rechenservice, der Code als Reaktion auf Ereignisse a
 Stichwort: Trigger
 Die eigene Anwendung muss auf einen Trigger konfiguriert werden z.B. HTTP requests.
 
-#### Container
+## Container
 
 Container ein einziges portables Formate, welches alles enthält, damit eine Anwendung unabhängig vom Setup und Host läuft.
 Container laufen auf einem Hostsystem, nicht wie eine VM, welche über ein Hypervisor läuft.
@@ -199,7 +199,7 @@ Vorgehen:
 2) Orchistration Service wählen, ECS oder EKS
 3) Wähle Platform: EC2 oder Fargate (managed von AWS)
 
-#### Networking - Virtual Private Cloud (VPC)
+## Networking - Virtual Private Cloud (VPC)
 
 Die VPC ist der oberste Container der Netzwerkisolation innerhalb eines AWS-Accounts.
 Alles, was IP-Netzwerke nutzt (EC2, RDS, ElastiCache, ENIs, NAT/IGW usw.), läuft innerhalb einer VPC.
@@ -265,8 +265,31 @@ __AWS Globals Accelerator__
 
 AWS Global Accelerator ist ein Netzwerkdienst, der den Datenverkehr von Benutzern zu Anwendungen optimiert, die in AWS ausgeführt werden. Er verwendet das globale AWS-Netzwerk, um den Datenverkehr über die optimalen Pfade zu leiten, was die Leistung und Verfügbarkeit von Anwendungen verbessert.
 
-#### Storage
+## Storage
 
 __Block Storage__
 
 Block Storage ist eine Speicherart, bei der Daten in Blöcken fester Größe gespeichert werden. Jeder Block hat eine eindeutige Adresse, die es dem Betriebssystem ermöglicht, direkt auf die Daten zuzugreifen. Block Storage wird häufig für Betriebssysteme und Anwendungen verwendet, die schnellen und direkten Zugriff auf Daten benötigen.
+Amazon EC2 instance store oder EBS (Elastic Block Store) sind Beispiele für Block Storage in AWS.
+
+Die Instance store ist temporär und geht verloren, wenn die Instanz gestoppt wird. EBS ist persistent und bleibt auch nach dem Stoppen der Instanz erhalten.
+Sie hängt direkt an der EC2 Instanz und kann wie eine Festplatte formatiert und gemountet werden. Anwendungsbeispiele temporäre Datenverarbeitung, Cache, Swap Dateien.
+
+EBS Volumes sind persistent und können unabhängig von der Lebensdauer der EC2 Instanz existieren. Snapshots ermöglichen Backups und die Wiederherstellung von Daten.
+
+Für die Automatisierung von Snapshots kann der Amazon Data Lifecycle Manager verwendent werden.
+
+__Object Storage__
+
+Object Storage ist eine Speicherarchitektur, bei der Daten als Objekte gespeichert werden. Jedes Objekt besteht aus den eigentlichen Daten, Metadaten und einer eindeutigen Kennung. Object Storage ist ideal für die Speicherung großer Mengen unstrukturierter Daten wie Bilder, Videos, Dokumente und Backups.
+
+Object = Daten + Metadaten + eindeutige ID
+
+S3 (Simple Storage Service) ist ein Beispiel für Object Storage in AWS.
+Die Objekte werden in Buckets organisiert, die als Container für die Objekte dienen. Jedes Objekt in einem Bucket wird durch einen eindeutigen Schlüssel (Key) identifiziert.
+
+__File Storage__
+
+File Storage ist eine Speicherart, bei der Daten in einer hierarchischen Struktur von Dateien und Verzeichnissen organisiert sind. Benutzer und Anwendungen greifen auf Dateien über Dateipfade zu. File Storage wird häufig für gemeinsame Dateifreigaben und Anwendungen verwendet, die eine traditionelle Dateisystemstruktur benötigen.
+
+Amazon Elastic File System (EFS) ist ein Beispiel für File Storage in AWS.
