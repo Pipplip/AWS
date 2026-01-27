@@ -134,6 +134,10 @@ resource "aws_s3_bucket" "mein_bucket" {
 
 ## EC2
 
+EC2 (Amazon Elastic Compute Cloud) sind virtuelle Maschinen (Server) in der Cloud. 
+Eine EC2 Instanz ist wie ein normaler PC, Server, Laptop, nur dass dieser in der Cloud läuft.
+Man kann verschiedene Betriebssysteme (Linux, Windows) auswählen und Software darauf installieren.
+
 Es gibt minimum capacity, desired capacity und maximum capacity.
 
 D.h. minimum capacity hat eine minimale Anzahl an EC2 Instanzen, damit das System überhaupt läuft. Desired capacity ist die optimale Anzahl an EC2 Instanzen um den aktuellen workload abzuarbeiten. Der Workload schwankt je nach Anzahl der Requests. Mithilfe des Auto scalings von AWS werden Instanzen aktiviert oder wieder deaktiviert um Anfragen effizient abzuarbeiten. Die maximum capacity definiert die maximale Anzahl an Instanzen um Kosten kontrollieren zu können.
