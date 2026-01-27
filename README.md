@@ -290,6 +290,38 @@ Die Objekte werden in Buckets organisiert, die als Container für die Objekte di
 
 __File Storage__
 
-File Storage ist eine Speicherart, bei der Daten in einer hierarchischen Struktur von Dateien und Verzeichnissen organisiert sind. Benutzer und Anwendungen greifen auf Dateien über Dateipfade zu. File Storage wird häufig für gemeinsame Dateifreigaben und Anwendungen verwendet, die eine traditionelle Dateisystemstruktur benötigen.
+File Storage ist eine Speicherart, bei der Daten in einer hierarchischen Struktur von Dateien und Verzeichnissen organisiert sind. Benutzer und Anwendungen greifen auf Dateien über Dateipfade zu. File Storage wird häufig für gemeinsame Dateifreigaben und Anwendungen verwendet, die eine traditionelle Dateisystemstruktur benötigen. Dateien können
+ohne Probleme synchron aufgerufen und bearbeitet werden.
 
 Amazon Elastic File System (EFS) ist ein Beispiel für File Storage in AWS.
+
+## Datenbanken
+
+__Relationale Datenbanken__
+
+Relationale Datenbanken speichern Daten in Tabellen mit Zeilen und Spalten. Sie verwenden SQL (Structured Query Language) für die Datenverwaltung und -abfrage. Relationale Datenbanken sind ideal für strukturierte Daten und unterstützen ACID-Eigenschaften (Atomicity, Consistency, Isolation, Durability).
+
+Amazon Relational Database Service (Amazon RDS) ist ein verwalteter Dienst für relationale Datenbanken in AWS. RDS unterstützt mehrere Datenbank-Engines, darunter Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database und Microsoft SQL Server.
+Aufgaben von RDS:
+- Automatisches Backup
+- Software-Patching
+- Überwachung
+- Skalierung der Rechen- und Speicherressourcen
+- Hochverfügbarkeit mit Multi-AZ-Bereitstellungen
+  
+Amazon Aurora ist eine gemanagte relationale Datenbank-Engine, die mit MySQL und PostgreSQL kompatibel ist. Sie bietet eine hohe Leistung und Verfügbarkeit durch verteilte Architektur und automatische Replikation.
+
+__NoSQL-Datenbanken__
+
+NoSQL-Datenbanken sind nicht-relationale Datenbanken, die flexible Datenmodelle unterstützen. Sie sind ideal für unstrukturierte oder semi-strukturierte Daten und bieten hohe Skalierbarkeit und Leistung.
+
+Amazon DynamoDB ist ein verwalteter NoSQL-Datenbankdienst in AWS. DynamoDB bietet schnelle und vorhersehbare Leistung mit nahtloser Skalierung. Es unterstützt sowohl dokumentenbasierte als auch schlüsselwertbasierte Datenmodelle.
+Daten einer NoSQL Datenbank heißen Items und werden in Tabellen organisiert. Jedes Item besteht aus Attributen (Schlüssel-Wert-Paare).
+
+__Caching__
+
+Caching ist eine Technik zur temporären Speicherung von Daten, um den schnellen Zugriff auf häufig verwendete Informationen zu ermöglichen. Caches reduzieren die Latenz und verbessern die Leistung von Anwendungen, indem sie Daten näher an den Endbenutzern speichern.
+
+Amazon ElastiCache ist ein verwalteter Caching-Dienst in AWS, der In-Memory-Datenbanken wie Redis und Memcached unterstützt. ElastiCache verbessert die Anwendungsleistung, indem es häufig verwendete Daten im Arbeitsspeicher speichert und so den Zugriff beschleunigt.
+
+## AI ML and Data Analytics
