@@ -132,6 +132,29 @@ resource "aws_s3_bucket" "mein_bucket" {
 
 ## Weitere Notizen
 
+## IAM (Identity and Access Management)
+IAM ist ein Service, der bestimmt, wer was in einer AWS Umgebung tun darf.
+Es ist ein zentraler Bestandteil der AWS-Sicherheit und ermöglicht es, den Zugriff auf AWS-Ressourcen zu kontrollieren.
+
+IAM besteht aus:   
+- **Benutzer (Users)**: Individuelle Identitäten, die Zugriff auf AWS-Ressourcen haben können. Jeder Benutzer hat Anmeldeinformationen (Passwort, Zugriffsschlüssel) und kann spezifische Berechtigungen erhalten.
+- **Gruppen (Groups)**: Eine Sammlung von Benutzern, die gemeinsame Berechtigungen erhalten. Benutzer können Mitglied mehrerer Gruppen sein.
+- **Rollen (Roles)**: Rollen sind AWS-Identitäten mit bestimmten Berechtigungen, die von Benutzern oder Diensten übernommen werden können. Rollen ermöglichen es, temporären Zugriff auf Ressourcen zu gewähren, ohne dass Anmeldeinformationen benötigt werden.
+- **Policies**: Dokumente, die Berechtigungen definieren, um den Zugriff auf AWS-Ressourcen zu steuern. Policies können an Benutzer, Gruppen oder Rollen angehängt werden, um ihnen die entsprechenden Berechtigungen zu erteilen.
+Policies bestehen aus einer oder mehreren Anweisungen, die die Berechtigungen definieren. Jede
+
+Wie IAM prüft:   
+```
+Benutzer/Rolle
+      ↓
+IAM Policy
+      ↓
+Erlaubt?
+      ↓
+Ja → Aktion
+Nein → AccessDenied
+```
+
 ## EC2
 
 EC2 (Amazon Elastic Compute Cloud) sind virtuelle Maschinen (Server) in der Cloud. 
