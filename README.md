@@ -25,51 +25,58 @@ Du wählst bei jedem Dienst eine Region aus.
 
 ---
 
-## 🔧 3. Wichtige AWS-Dienste
+# AWS Services Übersicht
 
-| Dienst                    | Beschreibung                                                 | Terraform-Name                                            |
-|---------------------------|--------------------------------------------------------------|-----------------------------------------------------------|
-| **EC2**                   | Virtuelle Server (Linux/Windows)                             | `aws_instance`                                            |
-| **S3**                    | Objektspeicher (Dateien, Backups, Hosting)                   | `aws_s3_bucket`                                           |
-| **RDS**                   | Verwaltete relationale Datenbanken (MySQL, PostgreSQL, etc.) | `aws_db_instance`                                         |
-| **VPC**                   | Virtuelles Netzwerk (Subnetze, Firewalls, Gateways)          | `aws_vpc`                                                 |
-| **IAM**                   | Benutzer, Rollen, Rechte & Policies verwalten                | `aws_iam_user`, `aws_iam_role`, `aws_iam_policy`          |
-| **Lambda**                | Serverless Funktionen (Code ausführen ohne Server)           | `aws_lambda_function`                                     |
-| **CloudWatch**            | Monitoring & Logs, Alarm                                     | `aws_cloudwatch_log_group`, `aws_cloudwatch_metric_alarm` |
-| **CloudTrail**            | API-Auditing & Aktivitätslogs                                | `aws_cloudtrail`                                          |
-| **Route 53**              | DNS-Verwaltung, Domains, Routing                             | `aws_route53_zone`, `aws_route53_record`                  |
-| **ELB**                   | Load Balancer für verteilte Server (Traffic Verteiler)       | `aws_lb`, `aws_lb_target_group`                           |
-| **Auto Scaling Group**    | Automatische Skalierung von EC2                              | `aws_autoscaling_group`                                   |
-| **EBS**                   | Block-Storage für EC2                                        | `aws_ebs_volume`                                          |
-| **EFS**                   | Gemeinsames Dateisystem (network file storage)               | `aws_efs_file_system`                                     |
-| **Elasticache**           | In-memory cache                                              | `aws_elasticache_cluster`                                 |
-| **DynamoDB**              | No-SQL Key-Value Datenbank                                   | `aws_dynamo_table`                                        |
-| **API Gateway**           | REST/HTTP API Management für Lambda und Microservices        | `aws_api_gateway_rest_api`                                |
-| **SQS**                   | Message Queue                                                | `aws_sqs_queue`                                           |
-| **SNS**                   | Notifications                                                | `aws_sns_topic`                                           |
-| **ECS**                   | Container Orchestrierung (Docker)                            | `aws_ecs_cluster`, `aws_ecs_service`                      |
-| **EKS**                   | Kubernetes auf AWS                                           | `aws_eks_cluster`                                         |
-| **ECR**                   | Docker Image registry                                        | `aws_ecr_repository`                                      |
-| **CloudFront**            | CDN für schnelle Content-Auslieferung                        | `aws_cloudfront_distribution`                             |
-| **Global Accelerator**    | Optimierter globaler Traffic-Routing Layer                   | `aws_globalaccelerator_accelerator`                       |
-| **Systems Manager (SSM)** | EC2 Management ohne SSH                                      | `aws_ssm_parameter`, `aws_ssm_document`                   |
-| **Secrets Manager**       | Sicheres Speichern von Secrets & Credentials                 | `aws_secretsmanager_secret`                               |
-| **KMS**                   | Key Management & Verschlüsselung                             | `aws_kms_key`                                             |
-| **WAF**                   | Web Application Firewall                                     | `aws_wafv2_web_acl`                                       |
-| **GuardDuty**             | Threat Detection & Security Monitoring                       | `aws_guardduty_detector`                                  |
-| **Inspector**             | Sicherheits- & Vulnerability Scans                           | `aws_inspector2_enabler`                                  |
-| **Config**                | Compliance & Ressourcen-Drift Monitoring                     | `aws_config_configuration_recorder`                       |
-| **Organizations**         | Multi-Account Management                                     | `aws_organizations_organization`                          |
-| **Control Tower**         | Enterprise Multi-Account Governance                          | AWS-managed                                               |
-| **Glue**                  | ETL & Data Catalog                                           | `aws_glue_catalog_database`, `aws_glue_job`               |
-| **Kinesis**               | Echtzeit Data Streaming                                      | `aws_kinesis_stream`                                      |
-| **Firehose**              | Managed Data Delivery Streams                                | `aws_kinesis_firehose_delivery_stream`                    |
-| **Athena**                | SQL Queries direkt auf S3 Data Lake                          | `aws_athena_database`                                     |
-| **EMR**                   | Hadoop/Spark Cluster Processing                              | `aws_emr_cluster`                                         |
-| **QuickSight**            | BI Dashboards & Data Visualization                           | `aws_quicksight_*`                                        |
-| **SageMaker**             | Machine Learning Plattform                                   | `aws_sagemaker_notebook_instance`                         |
-| **Bedrock**               | Generative AI / Foundation Models                            | `aws_bedrock_*`                                           |
----
+| Kategorie       | Dienst                      | Zweck                                                             | Terraform                                                 |
+|-----------------|-----------------------------|-------------------------------------------------------------------|-----------------------------------------------------------|
+| 🖥️ Compute     | EC2                         | Virtuelle Server (Linux/Windows)                                  | `aws_instance`                                            |
+| 🖥️ Compute     | Lambda                      | Serverless Funktionen (Code ausführen ohne Server)                | `aws_lambda_function`                                     |
+| 🖥️ Compute     | ECS                         | Container-Orchestrierung für Docker                               | `aws_ecs_cluster`, `aws_ecs_service`                      |
+| 🖥️ Compute     | ECR                         | Docker Image registry                                             | `aws_ecr_repository`                                      |
+| 🖥️ Compute     | EKS                         | Managed Kubernetes Cluster                                        | `aws_eks_cluster`                                         |
+| 🖥️ Compute     | Fargate                     | Serverless Laufzeit für Container                                 | ECS/EKS-Konfiguration                                     |
+| 🖥️ Compute     | Auto Scaling Group          | Automatische Skalierung von EC2-Instanzen                         | `aws_autoscaling_group`                                   |
+| 🖥️ Compute     | SSM (Systems Manager)       | Verwaltung, Patching und Remote-Zugriff auf EC2 (ähnlich wie SSH) | `aws_ssm_parameter`, `aws_ssm_document`                   |
+| 🌐 Networking   | VPC                         | Virtuelles Netzwerk in AWS (Subnetze, Firewalls, Gateways)        | `aws_vpc`                                                 |
+| 🌐 Networking   | Route 53                    | DNS- und Domain-Verwaltung, Routing                               | `aws_route53_zone`, `aws_route53_record`                  |
+| 🌐 Networking   | ELB (Elastic Load Balancer) | Verteilung von Anfragen auf mehrere Ziele                         | `aws_lb`, `aws_lb_target_group`                           |
+| 🌐 Networking   | API Gateway                 | REST- und HTTP-API Management                                     | `aws_api_gateway_rest_api`                                |
+| 🌐 Networking   | CloudFront                  | Content Delivery Network (CDN)                                    | `aws_cloudfront_distribution`                             |
+| 🌐 Networking   | Global Accelerator          | Optimiertes globales Routing über das AWS-Netzwerk                | `aws_globalaccelerator_accelerator`                       |
+| 🌐 Networking   | Direct Connect              | Dedizierte Netzwerkverbindung zu AWS                              | `aws_dx_connection`                                       |
+| 💾 Storage      | S3                          | Objektspeicher für Dateien, Backups und Hosting                   | `aws_s3_bucket`                                           |
+| 💾 Storage      | EBS                         | Persistenter Blockspeicher für EC2                                | `aws_ebs_volume`                                          |
+| 💾 Storage      | EFS                         | Gemeinsames Netzwerk-Dateisystem (NFS - network filesystem)       | `aws_efs_file_system`                                     |
+| 🗄️ Datenbanken | RDS                         | Verwaltete relationale Datenbanken                                | `aws_db_instance`                                         |
+| 🗄️ Datenbanken | Aurora                      | Hochperformante relationale Datenbank                             | `aws_rds_cluster`                                         |
+| 🗄️ Datenbanken | DynamoDB                    | Serverlose NoSQL Key-Value Datenbank                              | `aws_dynamodb_table`                                      |
+| 🗄️ Datenbanken | ElastiCache                 | In-Memory Cache (Redis/Memcached)                                 | `aws_elasticache_cluster`                                 |
+| 🗄️ Datenbanken | OpenSearch                  | Such- und Analyseplattform                                        | `aws_opensearch_domain`                                   |
+| 📬 Messaging    | SQS                         | Nachrichtenwarteschlange (Queue)                                  | `aws_sqs_queue`                                           |
+| 📬 Messaging    | SNS                         | Pub/Sub Messaging und Benachrichtigungen                          | `aws_sns_topic`                                           |
+| 📬 Messaging    | EventBridge                 | Event Routing zwischen Services                                   | `aws_eventbridge_rule`                                    |
+| 📬 Messaging    | Step Functions              | Workflow-Orchestrierung                                           | `aws_sfn_state_machine`                                   |
+| 📬 Messaging    | Kinesis                     | Echtzeit-Datenstreaming                                           | `aws_kinesis_stream`                                      |
+| 📬 Messaging    | Firehose                    | Datenströme in S3, Redshift etc. liefern                          | `aws_kinesis_firehose_delivery_stream`                    |
+| 🔐 Security     | IAM                         | Benutzer, Rollen, Rechte & Policies verwalten                     | `aws_iam_user`, `aws_iam_role`, `aws_iam_policy`          |
+| 🔐 Security     | KMS                         | Verwaltung von Verschlüsselungsschlüsseln                         | `aws_kms_key`                                             |
+| 🔐 Security     | Secrets Manager             | Speicherung von Passwörtern und Secrets                           | `aws_secretsmanager_secret`                               |
+| 🔐 Security     | ACM                         | Verwaltung von SSL/TLS-Zertifikaten                               | `aws_acm_certificate`                                     |
+| 🔐 Security     | WAF                         | Schutz vor Webangriffen                                           | `aws_wafv2_web_acl`                                       |
+| 🔐 Security     | GuardDuty                   | Bedrohungserkennung                                               | `aws_guardduty_detector`                                  |
+| 🔐 Security     | Inspector                   | Schwachstellen- und Sicherheitsanalysen                           | `aws_inspector2_enabler`                                  |
+| 📋 Governance   | CloudTrail                  | Protokollierung von API-Aufrufen (Aktivitätslogs)                 | `aws_cloudtrail`                                          |
+| 📋 Governance   | AWS Config                  | Compliance- und Konfigurationsüberwachung                         | `aws_config_configuration_recorder`                       |
+| 📋 Governance   | Organizations               | Verwaltung mehrerer AWS-Konten                                    | `aws_organizations_organization`                          |
+| 📋 Governance   | Control Tower               | Enterprise Landing Zone & Governance                              | AWS-managed                                               |
+| 📈 Monitoring   | CloudWatch                  | Metrics, Logs, Dashboards und Alarme                              | `aws_cloudwatch_log_group`, `aws_cloudwatch_metric_alarm` |
+| 📈 Monitoring   | X-Ray                       | Distributed Tracing für Anwendungen                               | `aws_xray_sampling_rule`                                  |
+| 📊 Analytics    | Glue                        | ETL-Prozesse und Data Catalog                                     | `aws_glue_catalog_database`, `aws_glue_job`               |
+| 📊 Analytics    | Athena                      | SQL-Abfragen direkt auf S3                                        | `aws_athena_database`                                     |
+| 📊 Analytics    | EMR                         | Hadoop- und Spark-Cluster                                         | `aws_emr_cluster`                                         |
+| 📊 Analytics    | QuickSight                  | BI-Dashboards und Datenvisualisierung                             | `aws_quicksight_*`                                        |
+| 🤖 AI / ML      | SageMaker                   | Entwicklung und Betrieb von ML-Modellen                           | `aws_sagemaker_notebook_instance`                         |
+| 🤖 AI / ML      | Bedrock                     | Zugriff auf Foundation Models und Generative AI                   | `aws_bedrock_*`                                           |
 
 ## 📐 4. Die Struktur deiner Arbeit in AWS
 
